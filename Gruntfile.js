@@ -369,10 +369,22 @@ module.exports = function (grunt) {
                 'imagemin',
                 'svgmin'
             ]
-        }
+        },
+	    buildcontrol: {
+	              options: {
+	                  branch: 'gh-pages',
+	                  commit: true,
+	                  push: true
+	              },
+	              github: {
+	                  options: {
+	                      remote: 'git@github.com:angiburton/vgreunion2014.git'
+	                  }
+	              }
+	          }
     });
 
-
+	
     grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
